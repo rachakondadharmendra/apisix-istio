@@ -1,0 +1,26 @@
+
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: apisix-route
+  namespace: ingress-apisix
+spec:
+  http:
+  - name: rule1
+    match:
+      hosts:
+      - apisix.rachakondadharmendra.info
+      paths:
+      - /*
+    upstreams:
+    - name: apisix-upstream
+---
+apiVersion: apisix.apache.org/v2
+kind: ApisixUpstream
+metadata:
+  name: apisix-upstream
+  namespace: ingress-apisix
+spec:
+  externalNodes:
+  - type: Domain
+    name: apisix.rachakondadharmendra.info

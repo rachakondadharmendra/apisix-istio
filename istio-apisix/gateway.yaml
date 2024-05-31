@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: apisix-egress
+  namespace: ingress-apisix
+spec:
+  selector:
+    app.kubernetes.io/name: apisix
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - apisix.rachakondadharmendra.info
+    
+

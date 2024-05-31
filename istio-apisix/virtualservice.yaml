@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin-via-egress-gateway
+  namespace: ingress-apisix
+spec:
+  hosts:
+  - apisix.rachakondadharmendra.info
+  gateways:
+  - apisix-egress
+  - mesh
+  http:
+  - match:
+    - gateways:
+      - mesh
+      port: 80
+    route:
+    - destination:
+        host: apisix-gateway.ingress-apisix.svc.cluster.local
+        subset: apisix-ingress-subset
+        port:
+          number: 80
+      weight: 100
+  - match:
+    - gateways:
+      - apisix-egress
+      port: 80
+    route:
+    - destination:
+        host: apisix.rachakondadharmendra.info
+        port:
+          number: 80
+      weight: 100
