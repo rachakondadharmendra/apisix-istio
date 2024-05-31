@@ -1,34 +1,7 @@
 ![Arch_Diagram](https://github.com/rachakondadharmendra/Ops-Knowledge-Base/blob/main/Arch-Daigrams/apisix-istio-arch.gif)
 
+Note: Chatgpt has been use for documentation
 
-
-# Instance Creation with Configuration
-
-- **OS:** Ubuntu 22.04
-- **Storage:** 25GB
-- **Open Ports:** 80, 8080, 22 (default for SSH)
-- **IAM Instance Profile:** Admin_access_role (To access AWS resources securely)
-
-## User Data
-
-```bash
-#!/bin/bash
-
-sudo apt-get update -y && sudo apt-get dist-upgrade -y && sudo apt install unzip -y
-
-# Optional
-curl -q "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip -q awscliv2.zip
-sudo ./aws/install
-/usr/local/bin/aws --version
-
-sudo apt install docker.io -y docker-compose -y
-sudo usermod -aG docker ubuntu
-newgrp docker
-```
-Sure, here's the content formatted in a proper Markdown (.md) file:
-
-```markdown
 # Instance Creation with Configuration
 
 - **OS:** Ubuntu 22.04
@@ -134,7 +107,10 @@ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/downloa
 export NODE_PORT=$(kubectl get --namespace ingress-apisix -o jsonpath="{.spec.ports[0].nodePort}" services apisix-gateway)
 export NODE_IP=$(kubectl get nodes --namespace ingress-apisix -o jsonpath="{.items[0].status.addresses[0].address}")
 echo http://$NODE_IP:$NODE_PORT
+```
 
+Handy Commands, Used Commands to test,debug 
+```
 minikube tunnel 
 kubectl describe pod <podname>
 
