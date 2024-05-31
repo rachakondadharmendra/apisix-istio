@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: route-srv1-to-srv2
+spec:
+  hosts:
+  - srv1.demo.svc.cluster.local
+  http:
+  - route:
+    - destination:
+        host: srv2.demo.svc.cluster.local
