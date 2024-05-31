@@ -1,6 +1,6 @@
 ![Arch_Diagram](https://github.com/rachakondadharmendra/Ops-Knowledge-Base/blob/main/Arch-Daigrams/apisix-istio-arch.gif)
 
-Note: Chatgpt has been used for documentation
+Note: Chatgpt has been used for formatting
 
 # Instance Creation with Configuration
 
